@@ -40,7 +40,7 @@ class ItemCard extends StatelessWidget {
                   Flexible(
                     child: Container(
                       margin: EdgeInsets.only(left: 5),
-                      width: 90,
+                      width: 110,
                       height: 120,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -52,15 +52,19 @@ class ItemCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(
-                                _shoe.price,
-                                style: TextStyle(
-                                    color: Colors.grey,
-                                    decoration: TextDecoration.lineThrough),
+                              Expanded(
+                                child: Text(
+                                  '${_shoe.price}\$',
+                                  style: TextStyle(
+                                      color: Colors.grey,
+                                      decoration: TextDecoration.lineThrough),
+                                ),
                               ),
-                              Text(
-                                _shoe.price,
-                                style: TextStyle(color: Colors.red),
+                              Expanded(
+                                child: Text(
+                                  '${_shoe.price}\$',
+                                  style: TextStyle(color: Colors.red),
+                                ),
                               ),
                             ],
                           ),

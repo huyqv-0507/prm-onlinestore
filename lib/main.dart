@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_store/helpers/colors/color_helper.dart';
-import 'package:online_store/ui/components/test.dart';
 
 import 'ui/screens/navigation_bar.dart';
 
@@ -24,7 +23,7 @@ class _MyAppState extends State<MyApp> {
         primaryColor: ColorHelper.textColor,
         accentColor: ColorHelper.textColor,
       ),
-      home: Test(),
+      home: NavigationBar(),
     );
   }
 }

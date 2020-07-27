@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:online_store/blocs/detail_bloc.dart';
+import 'package:online_store/blocs/order_bloc.dart';
 import 'package:online_store/helpers/colors/color_helper.dart';
 import 'package:online_store/helpers/paddings/padding_helper.dart';
 import 'package:online_store/models/shoe.dart';
@@ -11,14 +12,22 @@ import 'item_card.dart';
 
 class DetailBody extends StatefulWidget {
   final Shoe shoe;
-
   const DetailBody({Key key, this.shoe}) : super(key: key);
+
   @override
   _DetailBodyState createState() => _DetailBodyState();
 }
 
 class _DetailBodyState extends State<DetailBody> {
-  DetailBloc detailBloc = new DetailBloc();
+  DetailBloc detailBloc;
+  OrderBloc orderBloc;
+  @override
+  void initState() {
+    super.initState();
+    detailBloc = DetailBloc.getInstance();
+    orderBloc = OrderBloc.getInstance();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -122,7 +131,7 @@ class _DetailBodyState extends State<DetailBody> {
                 Align(
                     alignment: Alignment.centerLeft,
                     child: Text(
-                      widget.shoe.price,
+                      '${widget.shoe.price}\$',
                       style: TextStyle(
                           decoration: TextDecoration.lineThrough,
                           color: ColorHelper.navBackgroundColor,
@@ -136,7 +145,7 @@ class _DetailBodyState extends State<DetailBody> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      widget.shoe.price,
+                      '${widget.shoe.price}\$',
                       style: TextStyle(
                           color: Colors.red,
                           fontWeight: FontWeight.bold,
@@ -162,6 +171,7 @@ class _DetailBodyState extends State<DetailBody> {
                               stream: detailBloc.counterStream,
                               initialData: 1,
                               builder: (context, snapshot) {
+                                orderBloc.counterChanged(snapshot.data);
                                 return Text(snapshot.data.toString());
                               }),
                         ),
@@ -232,5 +242,12 @@ class _DetailBodyState extends State<DetailBody> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    detailBloc.dispose();
+    orderBloc.dispose();
+    super.dispose();
   }
 }

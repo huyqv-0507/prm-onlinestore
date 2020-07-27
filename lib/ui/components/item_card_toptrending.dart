@@ -46,7 +46,7 @@ class ItemCardTopTrending extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Text(
-                    _shoe.price,
+                    '${_shoe.price}\$',
                     style: TextStyle(
                         color: Colors.grey,
                         decoration: TextDecoration.lineThrough),
@@ -55,7 +55,7 @@ class ItemCardTopTrending extends StatelessWidget {
                     width: 5,
                   ),
                   Text(
-                    _shoe.price,
+                    '${_shoe.price}\$',
                     style: TextStyle(color: Colors.red),
                   ),
                 ],

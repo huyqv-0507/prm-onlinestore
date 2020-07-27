@@ -3,23 +3,29 @@ import 'dart:async';
 import 'package:rxdart/subjects.dart';
 
 class DetailBloc {
-  int _count = 0;
+  static DetailBloc detailBloc;
+  static DetailBloc getInstance() {
+    return detailBloc ?? (detailBloc = DetailBloc());
+  }
 
+  int _count = 1;
+
+  Sink<int> get counterSink => _counter.sink;
   Stream<int> get counterStream => _counter.stream;
-  final _counter = BehaviorSubject<int>();
+  var _counter = BehaviorSubject<int>();
 
   //increment and decrement quantity shoe
-  countItem(String count) {
-    switch (count) {
+  countItem(String countStr) {
+    switch (countStr) {
       case 'increment':
         {
-          _counter.sink.add(_count += 1);
+          counterSink.add(_count += 1);
           break;
         }
       case 'decrement':
         {
           if (_count == 0) break;
-          _counter.sink.add(_count -= 1);
+          counterSink.add(_count -= 1);
           break;
         }
     }

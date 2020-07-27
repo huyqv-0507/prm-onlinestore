@@ -25,4 +25,6 @@ class ColorHelper {
   static final unSelectedItemNavColor = HexColor.fromHex('#989b9c');
   static final btnBgAppBar = HexColor.fromHex('#ebeef5');
   static final bgItemColor = HexColor.fromHex('#f7f8fa');
+  static final googleColor = HexColor.fromHex('#DB4437');
+  static final facebookColor = HexColor.fromHex('#4267B2');
 }

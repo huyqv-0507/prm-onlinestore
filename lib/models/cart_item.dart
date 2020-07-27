@@ -1,4 +1,4 @@
-import 'shoe.dart';
+import 'package:online_store/models/shoe.dart';
 
 class CartItem {
   final int countItem;
