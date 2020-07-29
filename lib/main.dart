@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:online_store/helpers/colors/color_helper.dart';
+import 'package:online_store/ui/screens/shopping_cart.dart';
 
 import 'ui/screens/navigation_bar.dart';
+import 'ui/screens/webview_payment.dart';
 
 void main() {
   runApp(MyApp());

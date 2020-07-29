@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 class Shoe {
   final String title, image, description;
-  final int id;
-  final double size, discount, price;
+  final int id, price;
+  final double size, discount;
   final Color color;
 
   Shoe(

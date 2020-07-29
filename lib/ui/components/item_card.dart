@@ -10,7 +10,7 @@ class ItemCard extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        width: 200,
+        width: 210,
         height: 150,
         /*decoration: BoxDecoration(
           color: ColorHelper.bgItemColor,

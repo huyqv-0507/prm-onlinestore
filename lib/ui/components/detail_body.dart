@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:online_store/blocs/detail_bloc.dart';
-import 'package:online_store/blocs/order_bloc.dart';
 import 'package:online_store/helpers/colors/color_helper.dart';
 import 'package:online_store/helpers/paddings/padding_helper.dart';
 import 'package:online_store/models/shoe.dart';
@@ -20,16 +19,9 @@ class DetailBody extends StatefulWidget {
 
 class _DetailBodyState extends State<DetailBody> {
   DetailBloc detailBloc;
-  OrderBloc orderBloc;
-  @override
-  void initState() {
-    super.initState();
-    detailBloc = DetailBloc.getInstance();
-    orderBloc = OrderBloc.getInstance();
-  }
-
   @override
   Widget build(BuildContext context) {
+    detailBloc = DetailBloc.getInstance();
     Size size = MediaQuery.of(context).size;
     return SingleChildScrollView(
       child: Column(
@@ -171,7 +163,6 @@ class _DetailBodyState extends State<DetailBody> {
                               stream: detailBloc.counterStream,
                               initialData: 1,
                               builder: (context, snapshot) {
-                                orderBloc.counterChanged(snapshot.data);
                                 return Text(snapshot.data.toString());
                               }),
                         ),
@@ -247,7 +238,6 @@ class _DetailBodyState extends State<DetailBody> {
   @override
   void dispose() {
     detailBloc.dispose();
-    orderBloc.dispose();
     super.dispose();
   }
 }
